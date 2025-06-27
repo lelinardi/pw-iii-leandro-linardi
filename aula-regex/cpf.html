@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de CPF com Regex</title>
+</head>
+
+<body>
+    <h1>Validação de CPF com Regex</h1>
+    <p>Este exemplo demonstra como validar um CPF utilizando expressões regulares.</p>
+    <p>O CPF deve estar no formato: <strong>XXX.XXX.XXX-XX</strong>, onde X é um dígito de 0 a 9.</p>
+
+    <form id="cpfForm">
+        <label for="cpfInput">Digite o CPF:</label>
+        <input type="text" id="cpfInput" placeholder="Ex: 123.456.789-09" required>
+        <button type="submit">Validar</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        document.getElementById('cpfForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const cpfInput = document.getElementById('cpfInput').value;
+            const cpfRegex = /^(?!000\.000\.000\-00)(\d{3}\.\d{3}\.\d{3}\-\d{2})$/;
+
+            if (cpfRegex.test(cpfInput)) {
+                document.getElementById('result').textContent = 'CPF válido!';
+            } else {
+                document.getElementById('result').textContent = 'CPF inválido!';
+            }
+        });
+    </script>
+
+</body>
+
+</html>
